@@ -2,14 +2,16 @@
 
 Modern boutique web experience — liquid glass UI, AI stylist (coming), community, mood boards.
 
-## Phase 0 (current)
+## Current (client-facing)
 
-Design system foundations:
+Shoppers see the boutique only — no design-system playground.
 
-- Pink–red / dark wine liquid background (cursor-reactive)
-- `GlassSurface` + core controls
-- Domain-ready cards (product, feed, chat, boards, reviews, stats)
-- Living playground at [`/design-system`](http://localhost:3000/design-system)
+- Multi-palette liquid background (auto-cycles rose, maroon, pink, ocean, grass, violet, amber)
+- Glass UI used as finish, not a user control
+- Routes: Home, Shop, Stylist, Community, Dashboard
+- **Verified buyer reviews** with photo + video attachments (local preview until Supabase Storage)
+
+Internal components live under `src/components/system/*` for developers only.
 
 ## Run
 
@@ -23,9 +25,9 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Next phases
 
-1. App shell + routes (Shop, Chat, Community, Boards, Dashboard)
-2. Mock catalog / feeds / boards
-3. Supabase + AI keys (after skeleton)
+1. Supabase Auth + Storage for real verified purchases & media
+2. Live AI stylist + optional free/open video generation models
+3. Richer mood boards and community moderation
 
 ## Stack
 

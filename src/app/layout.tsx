@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Outfit } from "next/font/google";
 import { LiquidBackground } from "@/components/system/LiquidBackground";
+import { SiteNav } from "@/components/layout/SiteNav";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -18,7 +19,7 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   title: "Junaki — Modern Boutique",
   description:
-    "Junaki is a modern boutique with AI styling, community, and liquid glass design.",
+    "Discover curated fashion, AI styling, community looks, and verified buyer reviews with photo & video.",
 };
 
 export default function RootLayout({
@@ -33,6 +34,7 @@ export default function RootLayout({
     >
       <body className="relative min-h-full font-sans text-foreground">
         <LiquidBackground />
+        <SiteNav />
         {children}
       </body>
     </html>
