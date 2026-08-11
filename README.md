@@ -30,3 +30,20 @@ Open [http://localhost:3000](http://localhost:3000).
 ## Stack
 
 Next.js (App Router) · React · TypeScript · Tailwind CSS v4 · Framer Motion · Lucide
+
+## Deploy on Render
+
+Blueprint: [`render.yaml`](./render.yaml)
+
+1. [Render Dashboard](https://dashboard.render.com) → **New** → **Blueprint**
+2. Connect `nilabh25bcs10235-beep/junaki` and apply the blueprint  
+   **or** create a **Web Service** manually:
+
+| Setting | Value |
+| --- | --- |
+| Runtime | Node |
+| Build | `npm install && npm run build` |
+| Start | `npm start` |
+| Node | `20` (`NODE_VERSION`) |
+
+No env secrets required for Phase 0. Add Supabase / AI keys later under **Environment**.
