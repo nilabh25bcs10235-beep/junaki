@@ -1,5 +1,9 @@
 # Junaki — Render Blueprint
 # https://render.com/docs/blueprint-spec
+#
+# Do not set NODE_ENV=production in envVars: that makes `npm install`
+# skip packages needed at build time (Tailwind, TypeScript, etc.).
+# Next.js still runs production mode via `next build` / `next start`.
 services:
   - type: web
     name: junaki
@@ -7,12 +11,10 @@ services:
     plan: free
     region: oregon
     branch: main
-    buildCommand: npm install && npm run build
+    buildCommand: npm install --include=dev && npm run build
     startCommand: npm start
     autoDeploy: true
     healthCheckPath: /
     envVars:
       - key: NODE_VERSION
         value: "20"
-      - key: NODE_ENV
-        value: production

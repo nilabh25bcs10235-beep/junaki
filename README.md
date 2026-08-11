@@ -42,8 +42,10 @@ Blueprint: [`render.yaml`](./render.yaml)
 | Setting | Value |
 | --- | --- |
 | Runtime | Node |
-| Build | `npm install && npm run build` |
+| Build | `npm install --include=dev && npm run build` |
 | Start | `npm start` |
 | Node | `20` (`NODE_VERSION`) |
+
+**Important:** do not set `NODE_ENV=production` as a service env var. That skips install of build tooling and breaks Tailwind. `next build` / `next start` already run in production mode.
 
 No env secrets required for Phase 0. Add Supabase / AI keys later under **Environment**.
