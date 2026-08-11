@@ -1,11 +1,14 @@
 "use client";
 
+import Link from "next/link";
 import { GlassSurface } from "./GlassSurface";
 import { Badge } from "./Badge";
 import { StarRating } from "./StarRating";
 import { cn } from "@/lib/cn";
 
 export type ProductCardProps = {
+  id?: string;
+  href?: string;
   name: string;
   price: number;
   category: string;
@@ -15,6 +18,8 @@ export type ProductCardProps = {
 };
 
 export function ProductCard({
+  id,
+  href,
   name,
   price,
   category,
@@ -22,17 +27,16 @@ export function ProductCard({
   imageTone = "from-rose-400/50 to-rose-900/80",
   className,
 }: ProductCardProps) {
-  return (
+  const to = href ?? (id ? `/shop/${id}` : undefined);
+
+  const card = (
     <GlassSurface
       variant="card"
-      interactive
-      className={cn("flex flex-col overflow-hidden p-0", className)}
+      interactive={!!to}
+      className={cn("flex h-full flex-col overflow-hidden p-0", className)}
     >
       <div
-        className={cn(
-          "relative aspect-[4/5] bg-gradient-to-br",
-          imageTone,
-        )}
+        className={cn("relative aspect-[4/5] bg-gradient-to-br", imageTone)}
       >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.25),transparent_50%)]" />
         <div className="absolute bottom-3 left-3">
@@ -51,5 +55,13 @@ export function ProductCard({
         <StarRating value={rating} readOnly size="sm" />
       </div>
     </GlassSurface>
+  );
+
+  if (!to) return card;
+
+  return (
+    <Link href={to} className="block h-full outline-none">
+      {card}
+    </Link>
   );
 }

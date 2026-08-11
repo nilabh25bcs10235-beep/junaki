@@ -1,6 +1,5 @@
-import { products, reviews } from "@/lib/mock/data";
+import { products } from "@/lib/mock/data";
 import { ProductCard } from "@/components/system/ProductCard";
-import { ReviewSection } from "@/components/reviews/ReviewSection";
 import { GlassSurface } from "@/components/system/GlassSurface";
 import { SliderDemoBudget } from "@/components/shop/BudgetFilter";
 
@@ -24,6 +23,7 @@ export default function ShopPage() {
         {products.map((p) => (
           <ProductCard
             key={p.id}
+            id={p.id}
             name={p.name}
             price={p.price}
             category={p.category}
@@ -33,11 +33,10 @@ export default function ShopPage() {
         ))}
       </div>
 
-      <ReviewSection
-        initialReviews={reviews}
-        isVerifiedBuyer
-        productId={undefined}
-      />
+      <p className="text-center text-sm text-[var(--junaki-muted)]">
+        Open a product for full details, sizes, and verified photo/video
+        reviews.
+      </p>
     </main>
   );
 }
